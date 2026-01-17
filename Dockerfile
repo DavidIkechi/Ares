@@ -5,6 +5,8 @@ WORKDIR /code
 COPY ./ /code/
 
 RUN npm install
+# Increase memory limit to 4GB (4096MB) or higher if needed
+ENV NODE_OPTIONS="--max-old-space-size=4096"
 RUN npm run build
 
 FROM nginx as webserver
